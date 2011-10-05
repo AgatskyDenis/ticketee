@@ -1,12 +1,4 @@
 Ticketee::Application.routes.draw do
-  get "tickets/new"
-
-  get "tickets/show"
-
-  get "ticket/new"
-
-  get "ticket/show"
-
   resources :projects do
     resources :tickets
   end
