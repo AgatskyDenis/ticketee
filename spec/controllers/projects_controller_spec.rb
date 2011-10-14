@@ -9,4 +9,33 @@ describe ProjectsController do
    flash[:alert].should eql(message)
  end
 
+ let(:project) { Factory(:project) }
+
+ let(:user) do
+   user = Factory(:user)
+   user.confirm!
+   user
+ end
+ context "standard users" do
+   it "cannot access the new action" do
+   sign_in(:user, user)
+  get :new
+  response.should redirect_to(root_path)
+  flash[:alert].should eql("You must be an admin to do that.")
+   end
+ end
+
+{ "new" => "get",
+"create" => "post",
+"edit" => "get",
+"update" => "put",
+"destroy" => "delete" }.each do |action, method|
+it "cannot access the #{action} action" do
+  sign_in(:user, user)
+  send(method, action.dup, :id => project.id)
+  response.should redirect_to(root_path)
+  flash[:alert].should eql("You must be an admin to do that.")
+end
+end
+
 end
