@@ -43,6 +43,16 @@ def update
  end
 end
 
+def destroy
+if @user == current_user
+  flash[:alert] = "You cannot delete yourself!"
+else
+@user.destroy
+flash[:notice] = "User has been deleted."
+end
+ redirect_to admin_users_path
+end
+
 private
 def find_user
   @user = User.find(params[:id])
@@ -54,3 +64,12 @@ end
 
 end
 
+
+
+
+
+def destroy
+  @user.destroy
+  flash[:notice] = "User has been deleted."
+redirect_to admin_users_path
+end
