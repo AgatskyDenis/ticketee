@@ -10,6 +10,8 @@ gem 'therubyracer'
 gem 'devise', '~> 1.4.3'
 gem 'cancan'
 gem 'paperclip'
+gem 'selenium-webdriver','2.5.0'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
