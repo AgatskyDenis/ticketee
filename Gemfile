@@ -10,7 +10,6 @@ gem 'therubyracer'
 gem 'devise', '~> 1.4.3'
 gem 'cancan'
 gem 'paperclip'
-gem 'selenium-webdriver','2.5.0'
 
 
 # Gems used only for assets and not required
@@ -43,4 +42,6 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl'
   gem 'email_spec'
+  gem 'selenium-webdriver','2.5.0'
+  gem 'launchy'
 end
