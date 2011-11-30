@@ -11,5 +11,3 @@ def authorize_admin!
 end
 
 end
-
-

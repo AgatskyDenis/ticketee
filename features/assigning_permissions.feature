@@ -68,3 +68,4 @@ Scenario: Deleting a ticket for a project
   And I follow "Delete"
   Then I should see "Ticket has been deleted."
 
+
