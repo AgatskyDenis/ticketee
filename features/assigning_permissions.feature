@@ -15,10 +15,10 @@ Feature: Assigning permissions
     And I follow "Users"
     And I follow "user@ticketee.com"
     And I follow "Permissions"
-
     And "user@ticketee.com" has created a ticket for this project:
       | title | description        |
       | Shiny! | Eye-blindingly so |
+    Given there is a state called "Open"
 
   Scenario: Viewing a project
     When I check "View" for "TextMate 2"
@@ -40,10 +40,6 @@ Scenario: Creating tickets for a project
   And I fill in "Description" with "Make it so!"
   And I press "Create"
   Then I should see "Ticket has been created."
-
-
-
-
 
 Scenario: Updating a ticket for a project
   When I check "View" for "TextMate 2"
@@ -69,3 +65,16 @@ Scenario: Deleting a ticket for a project
   Then I should see "Ticket has been deleted."
 
 
+Scenario: Changing states for a ticket
+  When I check "View" for "TextMate 2"
+  And I check "Change States" for "TextMate 2"
+  And I press "Update"
+  And I follow "Sign out"
+  Given I am signed in as "user@ticketee.com"
+  When I follow "TextMate 2"
+  And I follow "Shiny!"
+  When I fill in "Text" with "Opening this ticket."
+  And I select "Open" from "State"
+  And I press "Create Comment"
+  Then I should see "Comment has been created."
+  And I should see "Open" within "#ticket .state"
