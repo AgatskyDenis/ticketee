@@ -8,7 +8,9 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </p>
+  
   <%= render "tags/form" %>
+  
   <% number = 0 %>
   <div id='files'>
     <%= f.fields_for :assets, :child_index => number do |asset| %>
@@ -20,4 +22,4 @@
   </div>
   <%= link_to "Add another file", 'javascript:', :id => "add_another_file" %>
   <%= f.submit %>
-  <% end %>
+<% end %>
