@@ -3,6 +3,7 @@ before_filter :authenticate_user!
 before_filter :find_ticket
 
   def create
+  @ticket.tag!(params[:tags])
   if cannot?(:"change states", @ticket.project)
     params[:comment].delete(:state_id)
   end
