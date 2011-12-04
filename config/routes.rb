@@ -11,7 +11,11 @@ Ticketee::Application.routes.draw do
 
 
   resources :projects do
-    resources :tickets
+    resources :tickets do
+      collection do
+        get :search
+      end
+    end
   end
 
   resources :tickets do
