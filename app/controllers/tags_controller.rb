@@ -5,7 +5,6 @@ if can?(:tag, @ticket.project) || current_user.admin?
   @tag = Tag.find(params[:id])
   @ticket.tags -= [@tag]
   @ticket.save
-  render :nothing => true
 end
   end
 
