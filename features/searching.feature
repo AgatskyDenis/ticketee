@@ -18,15 +18,21 @@ Feature: Searching
       | Tagged! | Hey! I'm it now! | iteration_2 | Closed |
     Given I am on the homepage
     And I follow "Ticketee" within "#projects"
+
 Scenario: Finding by tag
     When I fill in "Search" with "tag:iteration_1"
     And I press "Search"
     Then I should see "Tag!"
     And I should not see "Tagged!"
 
-
 Scenario: Finding by state
   When I fill in "Search" with "state:Open"
   And I press "Search"
+  Then I should see "Tag!"
+  And I should not see "Tagged!"
+
+Scenario: Clicking a tag goes to search results
+  When I follow "Tag!"
+  And I follow "iteration_1"
   Then I should see "Tag!"
   And I should not see "Tagged!"
