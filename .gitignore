@@ -6,3 +6,5 @@ tmp/
 public/system
 .idea
 nbproject
+config/initializers/mail.rb
+features/sending_emails.feature
