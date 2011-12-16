@@ -220,7 +220,7 @@ DEPENDENCIES
   launchy
   paperclip
   rails (= 3.1.0)
-  rspec-rails (~> 2.5)
+  rspec-rails (~> 2.6)
   ruby-debug19
   sass-rails (~> 3.1.0)
   searcher
