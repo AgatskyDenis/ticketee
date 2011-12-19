@@ -13,4 +13,10 @@ def create
   end
 end
 
+def show
+  @project = Project.find(params[:id])
+#debugger
+  respond_with(@project, :methods => "last_ticket")
+end
+
 end
