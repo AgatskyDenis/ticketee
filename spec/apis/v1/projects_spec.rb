@@ -6,12 +6,11 @@ describe "/api/v1/projects", :type => :api do
   
   before do
     @project = Factory(:project)
+    user.permissions.create!(:action => "view", :thing => @project)
   end
 
   context "projects viewable by this user" do
     before do
-      user.permissions.create!(:action => "view", :thing => @project)
-
       Factory(:project, :name => "Access denied.")
     end
 
@@ -84,13 +83,12 @@ describe "/api/v1/projects", :type => :api do
     it "JSON" do
       get "#{url}.json", :token => token
       project = @project.to_json(:methods => "last_ticket")
+#debugger
       last_response.body.should eql(project)
       last_response.status.should eql(200)
 
-
       project_response = JSON.parse(last_response.body)#["project"]
       ticket_title = project_response["last_ticket"]#["ticket"]["title"]
-#debugger
       ticket_title.should_not be_blank
     end
   end
