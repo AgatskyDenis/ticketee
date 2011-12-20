@@ -5,7 +5,16 @@ Ticketee::Application.routes.draw do
         resources :tickets
       end
     end
+
+#  namespace :api do
+    namespace :v2 do
+      resources :projects do
+        resources :tickets
+      end
+    end
+
   end
+
 
   get "tags/remove"
 
